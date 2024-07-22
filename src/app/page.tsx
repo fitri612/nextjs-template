@@ -5,8 +5,15 @@ import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
 import { Link } from '@/components/Link/Link';
 
 import tonSvg from './_assets/ton.svg';
+import { useEffect } from 'react';
 
 export default function Home() {
+
+  useEffect(() => {
+    if (window.Telegram) {
+      window.Telegram.WebApp.expand();
+    }
+  }, []);
   return (
     <List>
       <Section
@@ -15,7 +22,7 @@ export default function Home() {
       >
         <Link href='/ton-connect'>
           <Cell
-            before={<Image src={tonSvg.src} style={{ backgroundColor: '#007AFF' }}/>}
+            before={<Image src={tonSvg.src} style={{ backgroundColor: '#007AFF' }} />}
             subtitle='Connect your TON wallet'
           >
             TON Connect
